@@ -43,3 +43,14 @@ body {
     font-family: "Playpen Sans", cursive;
 
 }
+.nav-links a.selected {
+    text-decoration: underline;
+    text-decoration-thickness: 4px;
+    text-decoration-color: red;
+}
+.nav-links a:hover {
+    color: darkred;
+    text-decoration: underline;
+    text-decoration-thickness: 4px;
+    text-decoration-color: darkred;
+}
