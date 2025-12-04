@@ -32,11 +32,39 @@ document.querySelectorAll("#dropdown-content input[type='checkbox']").forEach(ch
         const selected = [...document.querySelectorAll("#dropdown-content input[type='checkbox']")]
             .filter(c => c.checked)
             .map(c => c.value);
-
         if (selected.length === 0) {
             document.getElementById("dropBtn").textContent = "";
         } else {
             document.getElementById("dropBtn").textContent = selected.join(", ");
         }
     });
+});
+
+document.getElementById("submitLocoBtn").addEventListener("click", async (e) => {
+    e.preventDefault();
+    const form = document.getElementById("addLocoPlaceholder");
+    const formData = new FormData(form);
+    const checkboxes = document.querySelectorAll("#dropdown-content input[type='checkbox']");
+    const daysBoolArray = Array.from(checkboxes).map(cb => cb.checked);
+    const data = {
+        latitude: formData.get("latitude"),
+        longitude: formData.get("longitude"),
+        city: formData.get("city"),
+        address: formData.get("address"),
+        zipcode: formData.get("zip"),
+        days: daysBoolArray,
+        open_time: formData.get("open"),
+        close_time: formData.get("close")
+    };
+    alert("Sending...")
+    const res = await fetch("/api/location/add", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data)
+    });
+
+    const result = await res.json();
+    if(result.success){
+        alert("Location added successfully!");
+    }
 });

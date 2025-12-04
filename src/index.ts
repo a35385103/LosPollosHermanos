@@ -2,7 +2,7 @@ import express from 'express';
 import { fileURLToPath } from 'url';
 import * as path from 'path';
 import bodyParser from 'body-parser';
-
+import mainRouter from "./mainRouter.ts";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
@@ -10,7 +10,7 @@ const app = express();
 const PORT = 3000;
 
 app.use(bodyParser.json());
-
+app.use("/api", mainRouter);
 app.use(express.static(path.join(__dirname, '../public')));
 
 app.get('/', (req, res) => {

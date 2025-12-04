@@ -10,7 +10,13 @@ CREATE TABLE location (
                           address VARCHAR(255) NOT NULL,
                           zipcode VARCHAR(20) NOT NULL,
     -- Opening Hours
-                          weekday ENUM('Mon','Tue','Wed','Thu','Fri','Sat','Sun') NOT NULL,
+                          mon TINYINT(1) NOT NULL DEFAULT 0,
+                          tue TINYINT(1) NOT NULL DEFAULT 0,
+                          wed TINYINT(1) NOT NULL DEFAULT 0,
+                          thu TINYINT(1) NOT NULL DEFAULT 0,
+                          fri TINYINT(1) NOT NULL DEFAULT 0,
+                          sat TINYINT(1) NOT NULL DEFAULT 0,
+                          sun TINYINT(1) NOT NULL DEFAULT 0,
                           open_time TIME NOT NULL,
                           close_time TIME NOT NULL
 );
