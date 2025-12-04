@@ -14,7 +14,50 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
             });
         })
+    addBlock();
 });
+
+async function addBlock() {
+    const locoContainer = document.getElementById("loco");
+    const res = await fetch("/api/location/getAll");
+    if (!res.ok) {
+        // Throw a meaningful error if the network request fails
+        throw new Error(`HTTP error! status: ${res.status}`);
+    }
+    const locations = await res.json();
+
+    // If no locations are returned, exit the function
+    if (locations.length === 0) {
+        locoContainer.innerHTML = '<p>No locations found.</p>';
+        return;
+    }
+
+    locations.forEach(location => {
+        const getDaysString = (loc) => {
+            const daysMap = {
+                mon: "Mon", tue: "Tue", wed: "Wed", thu: "Thu",
+                fri: "Fri", sat: "Sat", sun: "Sun"
+            };
+            const activeDays = Object.entries(daysMap)
+                // Check for a truthy value (1 in your database structure)
+                .filter(([key]) => loc[key] === 1)
+                .map(([, value]) => value);
+            return activeDays.length > 0 ? activeDays.join(", ") : "Not opened to public";
+        };
+
+        const daysOpenString = getDaysString(location);
+        locoContainer.innerHTML += `
+                <div class="locoBlock" data-location-id="${location.sId}">
+                    <p class="line"><strong>City:</strong> ${location.city}</p>
+                    <p class="line"><strong>Address:</strong> ${location.address}, ${location.zipcode}</p>
+                    <p class="line"><strong>Coordinates:</strong> ${location.latitude}, ${location.longitude}</p>
+                    <p class="line"><strong>Open Days:</strong> ${daysOpenString}</p>
+                    <p class="line"><strong>Hours:</strong> ${location.open_time} - ${location.close_time}</p>
+                </div>
+            `;
+    });
+}
+
 document.getElementById("addLocationBtn").addEventListener("click", (e) => {
     document.getElementById("addLocoPlaceholder").classList.toggle("invisible");
 });
@@ -66,5 +109,6 @@ document.getElementById("submitLocoBtn").addEventListener("click", async (e) => 
     const result = await res.json();
     if(result.success){
         alert("Location added successfully!");
+        window.location.reload();
     }
 });

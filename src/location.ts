@@ -49,6 +49,7 @@ lRouter.post('/add', (req, res) => {
         res.json({ success: true, id: result.insertId });
     });
 });
+//api/location/getAll
 lRouter.get("/getAll", (req, res) => {
     const sql = "SELECT * FROM location";
     connection.query(sql, (err, results) => {
