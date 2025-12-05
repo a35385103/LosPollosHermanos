@@ -1,0 +1,104 @@
+/* 列表區塊排版 */
+#employee,
+#employeeList {
+    display: grid;
+    gap: 15px;
+    width: 100%;
+}
+
+/* 整個頁面的容器 */
+.Emp {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 30px;
+}
+
+/* 標題字體（跟 Location 一樣） */
+.bigWord {
+    font-size: 27px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    font-family: "Playpen Sans", cursive;
+}
+
+/* 共用按鈕樣式 */
+.btn {
+    background-color: black;
+    border: none;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: 14px;
+    font-family: "Playpen Sans", cursive;
+}
+
+.btn:hover {
+    background-color: #2a2a2a;
+}
+
+/* 上方搜尋欄 */
+.searchBar {
+    padding: 10px;
+    font-size: 16px;
+    border: 2px solid black;
+    border-radius: 5px;
+    width: 300px;
+    margin-bottom: 20px;
+}
+
+/* 表單外框：仿 locoBlock */
+.empBlock {
+    border: 3px solid black;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    width: 600px;
+    border-radius: 5px;
+    font-size: 16px;
+    font-family: "Playpen Sans", cursive;
+    box-sizing: border-box;
+}
+
+/* 一開始隱藏，按 Add Employee 再顯示 */
+.empBlock.invisible {
+    display: none;
+}
+
+/* Submit 小按鈕 */
+.empBlock > .btn.small {
+    padding: 5px 10px;
+    font-size: 12px;
+    display: inline-block;
+    width: auto;
+    box-sizing: border-box;
+    align-self: flex-start;
+}
+
+/* 每一行 label + input 橫向排列 */
+.line {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 6px;
+}
+
+/* input / select 統一樣式 */
+.line input,
+.line select {
+    text-align: left;
+    flex: 1;
+    min-height: 23px;
+    min-width: 0;
+    box-sizing: border-box;
+    border: lightgray solid 1px;
+    background: none;
+    border-radius: 5px;
+    padding: 3px 6px;
+}
