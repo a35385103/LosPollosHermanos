@@ -1,0 +1,77 @@
+/* public/css/menu.css */
+
+#menu, #menuList {
+    display: grid;
+    gap: 15px;
+    width: 100%;
+}
+
+.Menu {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 30px;
+}
+
+.bigWord {
+    font-size: 27px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    font-family: "Playpen Sans", cursive;
+}
+
+.searchBar {
+    width: 300px;
+    padding: 8px 12px;
+    margin-bottom: 15px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+
+.btn {
+    padding: 8px 16px;
+    margin-bottom: 20px;
+    border-radius: 6px;
+    border: none;
+    background-color: #ffcc00;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.btn:hover {
+    background-color: #ffdd33;
+}
+
+.menuBlock {
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 15px 20px;
+    background-color: #fffaf0;
+}
+
+.line {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+    gap: 10px;
+}
+
+.line span:first-child {
+    min-width: 110px;
+    font-weight: 600;
+}
+
+.line input,
+.line select {
+    flex: 1;
+    min-height: 23px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    border: 1px solid lightgray;
+    padding: 3px 6px;
+    background: none;
+}
+
+.invisible {
+    display: none;
+}
